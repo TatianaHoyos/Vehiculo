@@ -1,28 +1,53 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        //instancia de una clase para crear un objeto
-            Carro myCarro = new Carro();
-            myCarro.color = "negro";
-            myCarro.modelo = "2022";
-            myCarro.precio = 1000000f;
 
-            System.out.println(myCarro.color);
-            System.out.println(myCarro.modelo);
-            System.out.println(myCarro.precio);
+        int opcionMenu=0;
+        ArrayList<Carro> carros = new ArrayList<>();
+        Carro myCarro = new Carro();
+        myCarro.color="negro";
+        myCarro.precio=10000000;
+        myCarro.modelo="2022";
 
-            myCarro.acelerar();
-            //instanciando una clase
-        Carro carro2 = new Carro();
-        carro2.color = "blanco";
-        carro2.modelo = "2021";
-        carro2.precio= 2000000;
-        System.out.println(carro2.color);
-        System.out.println(carro2.modelo);
-        System.out.println(carro2.precio);
-        carro2.frenar();
+        carros.add(myCarro);
 
-        myCarro.color = "gris";
-        System.out.println(myCarro.color);
+        while (opcionMenu<=4) {
+            Scanner input = new Scanner(System.in);
+
+            System.out.println(":::::::Menú Vehiculos:::::::");
+            System.out.println("1.lista vehiculos");
+            System.out.println("2.Modificar vehiculo");
+            System.out.println("3.Eliminar vehiculo");
+            System.out.println("4.Crear vehiculo");
+            System.out.println("5.Salir");
+            System.out.println("Seleccione una opción del menú");
+            opcionMenu= input.nextInt();
+           // input.close();
+            if (opcionMenu==1) {
+                for (int i=0; i<carros.size(); i++){
+                    System.out.println("::::carro número "+ i);
+                    System.out.println("color: "+ carros.get(i).color);
+                    System.out.println("precio: "+ carros.get(i).precio);
+                    System.out.println("modelo: "+ carros.get(i).modelo);
+
+                }
+            } else if (opcionMenu==4) {
+                Carro carroCreado = new Carro();
+                System.out.println("digite el modelo");
+                carroCreado.modelo= input.next();
+                System.out.println("digite el color");
+                carroCreado.color= input.next();
+                System.out.println("digite el precio");
+                carroCreado.precio=input.nextFloat();
+                carros.add(carroCreado);
+               // input.close();
+            }
+
+
+
+        }
 
 
     }
